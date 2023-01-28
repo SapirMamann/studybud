@@ -23,8 +23,8 @@
                         {% csrf_token %}
                         {% for field in form %}
                         <div class="form__group">
-                            <label for="{{field.label}}">{{field.label}}</label>
-                            <input id="profile_pic" name="profile_pic" type="text" />
+                            <label for="profile_pic">{{field.label}}</label>
+                            {{field}}
                         </div>
                         {% endfor %}
 
