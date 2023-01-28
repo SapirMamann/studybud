@@ -1,7 +1,17 @@
 from django.db import models
-from django.contrib.auth.models import User
-
+from django.contrib.auth.models import AbstractUser
 # Create your models here.
+
+class User(AbstractUser):                           #creating user that inherit from abstractuser and not from django.contrib.auth.models user
+    name = models.CharField(max_length=50, null=True)
+    email = models.EmailField(null=True, unique=True)                           #it has to be unique so django wont face 2 emails trying to connect with differnet passwords and it wont know who it refers to
+    bio = models.TextField(null=True)
+    
+    avatar = models.ImageField(null=True, default="avatar.svg") 
+    
+    USERNAME_FIELD = 'email'                            #so i can log in with my email and not by providing username
+    REQUIRED_FIELDS = []
+    
 class Topic(models.Model):
     name = models.CharField(max_length=200)
     
